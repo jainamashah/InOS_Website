@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InOS — Join the waitlist</title>
+  <meta name="description" content="Join the InOS waitlist and be the first to know when early access opens.">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="InOS — Join the waitlist">
+  <meta property="og:description" content="Be the first to know when early access opens.">
+  <meta property="og:image" content="/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="lattice" aria-hidden="true"></div>
+
+  <main class="hero">
+    <img class="hero__logo reveal" src="/assets/inos-logo.png" width="960" height="814" alt="InOS">
+
+    <p class="badge reveal"><span class="badge__dot" aria-hidden="true"></span>Waitlist open</p>
+
+    <h1 class="reveal">Be first in line for InOS.</h1>
+    <p class="lede reveal">Join the waitlist and we'll email you as soon as early access opens. No spam, just the news that matters.</p>
+
+    <form id="waitlist" class="waitlist reveal" action="https://formsubmit.co/jainam@u.nus.edu" method="POST" novalidate>
+      <label class="sr-only" for="email">Email address</label>
+      <div class="waitlist__row">
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+        <button type="submit">
+          <span class="btn__label">Join waitlist</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+      <input type="hidden" name="_subject" value="New InOS waitlist signup">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="waitlist__note" id="form-status" role="status" aria-live="polite">We'll only use your email to send you InOS updates.</p>
+    </form>
+
+    <div class="success" id="success" hidden>
+      <svg class="success__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      <h2>You're on the list.</h2>
+      <p>Thanks for signing up. We'll be in touch at <strong id="success-email"></strong> when early access opens.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__contact">
+      <span class="footer__label">Contact</span>
+      <a href="mailto:jainam@u.nus.edu">jainam@u.nus.edu</a>
+    </div>
+    <p class="footer__copy">&copy; <span id="year">2026</span> InOS</p>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>

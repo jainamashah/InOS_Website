@@ -1,0 +1,339 @@
+/* Brand colors sampled from InOS_logo_v1.png */
+:root {
+  --blue: #1c5793;
+  --blue-hover: #164a7d;
+  --blue-soft: rgba(28, 87, 147, 0.08);
+  --ink: #111111;
+  --muted: #5b6573;
+  --line: #dfe4eb;
+  --bg: #ffffff;
+  --danger: #b42318;
+  --radius: 12px;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Sora", var(--font-body);
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 45° lattice echoing the logo's geometry, faded toward the edges */
+.lattice {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(45deg, var(--blue-soft) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(-45deg, var(--blue-soft) 0 1px, transparent 1px 44px);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 10%, transparent 75%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 10%, transparent 75%);
+}
+
+.hero {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(48px, 10vh, 112px) 16px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero__logo {
+  width: clamp(140px, 30vw, 200px);
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 0 rgba(28, 87, 147, 0.45);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.lede {
+  margin: 16px 0 0;
+  max-width: 480px;
+  font-size: clamp(16px, 2.2vw, 18px);
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+/* Waitlist form */
+.waitlist {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 36px;
+}
+
+.waitlist__row {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 6px);
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04), 0 8px 24px rgba(28, 87, 147, 0.08);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.waitlist__row:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(28, 87, 147, 0.15), 0 8px 24px rgba(28, 87, 147, 0.08);
+}
+
+.waitlist.is-error .waitlist__row { border-color: var(--danger); }
+
+.waitlist input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  outline: none;
+}
+
+.waitlist input[type="email"]::placeholder { color: #9aa3af; }
+
+.waitlist button {
+  position: relative;
+  flex-shrink: 0;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--blue);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.waitlist button:hover { background: var(--blue-hover); }
+.waitlist button:active { transform: translateY(1px); }
+.waitlist button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.waitlist button:disabled { cursor: progress; }
+
+.btn__spinner {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: spin 0.7s linear infinite;
+}
+
+.waitlist.is-loading .btn__label { visibility: hidden; }
+.waitlist.is-loading .btn__spinner { opacity: 1; }
+
+.waitlist__note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.waitlist.is-error .waitlist__note { color: var(--danger); }
+.waitlist__note a { color: inherit; }
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Success state */
+.success {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 36px;
+  padding: 28px 24px;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 6px);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(28, 87, 147, 0.08);
+  animation: rise 0.4s ease-out both;
+}
+
+.success[hidden] { display: none; }
+
+.success__icon {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.success h2 {
+  margin: 14px 0 6px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.success p {
+  margin: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.success strong { color: var(--ink); font-weight: 600; }
+
+/* Footer */
+.footer {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.footer__contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer a {
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__copy {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Entrance motion */
+.reveal { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.reveal:nth-child(2) { animation-delay: 0.05s; }
+.reveal:nth-child(3) { animation-delay: 0.12s; }
+.reveal:nth-child(4) { animation-delay: 0.18s; }
+.reveal:nth-child(5) { animation-delay: 0.24s; }
+.reveal:nth-child(6) { animation-delay: 0.30s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(28, 87, 147, 0.45); }
+  70%  { box-shadow: 0 0 0 8px rgba(28, 87, 147, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(28, 87, 147, 0); }
+}
+
+@media (max-width: 480px) {
+  .waitlist__row {
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .waitlist input[type="email"] { text-align: center; }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .waitlist.is-loading .btn__spinner { animation: spin 1.4s linear infinite !important; }
+}
