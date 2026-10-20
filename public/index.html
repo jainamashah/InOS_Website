@@ -24,7 +24,8 @@
 <body>
   <div class="lattice" aria-hidden="true"></div>
 
-  <main class="hero">
+  <main>
+  <section class="hero">
     <img class="hero__logo reveal" src="/assets/inos-logo.png" width="960" height="814" alt="InOS">
 
     <p class="badge reveal"><span class="badge__dot" aria-hidden="true"></span>Waitlist open</p>
@@ -42,6 +43,7 @@
       </div>
       <input type="hidden" name="_subject" value="New InOS waitlist signup">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="waitlist__note" id="form-status" role="status" aria-live="polite"></p>
     </form>
 
     <div class="success" id="success" hidden>
@@ -49,6 +51,68 @@
       <h2>You're on the list.</h2>
       <p>Thanks for signing up. We'll be in touch at <strong id="success-email"></strong> when early access opens.</p>
     </div>
+  </section>
+
+  <section class="section" id="why" aria-labelledby="why-title">
+    <p class="eyebrow">Why</p>
+    <h2 id="why-title">Singapore is super-aged, and care can't keep up.</h2>
+    <ul class="stats">
+      <li class="stat"><span class="stat__value">21.4%</span><span class="stat__label">of citizens are 65+ in 2026</span></li>
+      <li class="stat"><span class="stat__value">1 in 4</span><span class="stat__label">citizens will be 65+ by 2035</span></li>
+      <li class="stat"><span class="stat__value">79,000</span><span class="stat__label">seniors live alone, up from 58,000 in 2018</span></li>
+    </ul>
+    <p class="lede">Eldercare centres have too few hands. Today's care robots can chat and comfort, but they can't step in to help, and every one needs custom software for each task.</p>
+    <p class="source">Sources: Population in Brief 2026; MOH (2023, 2024)</p>
+  </section>
+
+  <section class="section" id="what" aria-labelledby="what-title">
+    <p class="eyebrow">What</p>
+    <h2 id="what-title">The software that lets any care robot understand and help.</h2>
+    <p class="lede">InOS is a social intelligence layer for robots that helps seniors stay physically and emotionally independent.</p>
+    <ul class="cards">
+      <li class="card">
+        <h3>Understands intent, not just words</h3>
+        <p>Reads what a senior is trying to do from vision.</p>
+      </li>
+      <li class="card">
+        <h3>Helps emotionally and physically</h3>
+        <p>Steps in to support, instead of only talking.</p>
+      </li>
+      <li class="card">
+        <h3>Plug and play on any robot</h3>
+        <p>Software only, so it works with the robots centres already buy.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section" id="collaborations" aria-labelledby="collab-title">
+    <p class="eyebrow">Collaborations</p>
+    <h2 id="collab-title">Validated by members of 6 organisations, with 2 letters of intent.</h2>
+    <div class="partners">
+      <h3>Problem tested with</h3>
+      <ul class="chips">
+        <li>National University Health System</li>
+        <li>National University Polyclinics</li>
+        <li>NUS Alice Lee Centre for Nursing Studies</li>
+        <li>NUS Human-Centred Robotics Lab</li>
+        <li>The Compassionate Network</li>
+        <li>CARTIN</li>
+      </ul>
+    </div>
+    <div class="partners">
+      <h3>Letters of intent</h3>
+      <ul class="chips">
+        <li>Christian Care Foundation for Children with Disabilities (CCD)</li>
+        <li>Freedom Wheels Enterprises</li>
+      </ul>
+    </div>
+    <div class="partners">
+      <h3>Supported by</h3>
+      <ul class="chips">
+        <li>NUS School of Computing Venture Initiation Programme</li>
+      </ul>
+    </div>
+  </section>
   </main>
 
   <footer class="footer">
